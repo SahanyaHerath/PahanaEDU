@@ -70,7 +70,12 @@ public class ProductController extends HttpServlet {
 			
 	    	List<Product> productList = new ArrayList<Product>();
 			try {
-				productList = productService.getAllProducts();
+				String searchTerm = request.getParameter("search");
+				if (searchTerm != null && !searchTerm.trim().isEmpty()) {
+					productList = productService.searchProducts(searchTerm.trim());
+				} else {
+					productList = productService.getAllProducts();
+				}
 				request.setAttribute("products", productList);
 			} catch ( SQLException e) {
 				request.setAttribute("errorMessage", e.getMessage());
@@ -89,11 +94,13 @@ public class ProductController extends HttpServlet {
 	        String name = request.getParameter("name");
 	        double price = Double.parseDouble(request.getParameter("price"));
 	        String description = request.getParameter("description");
+	        int quantity = Integer.parseInt(request.getParameter("quantity"));
 	        
 	        Product product = new Product();
 	        product.setName(name);
 	        product.setPrice(price);
 	        product.setDescription(description);
+	        product.setQuantity(quantity);
 	        
 	        try {
 	            productService.addProduct(product);
@@ -133,8 +140,9 @@ public class ProductController extends HttpServlet {
 	        String name = request.getParameter("name");
 	        double price = Double.parseDouble(request.getParameter("price"));
 	        String description = request.getParameter("description");
+	        int quantity = Integer.parseInt(request.getParameter("quantity"));
 	        
-	        Product product = new Product(productId, name, description, price);
+	        Product product = new Product(productId, name, description, price, quantity);
 	        
 	        try {
 	            productService.updateProduct(product);

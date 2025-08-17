@@ -80,7 +80,12 @@ public class CustomerController extends HttpServlet {
     private void listCustomers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Customer> customerList = new ArrayList<>();
         try {
-            customerList = customerService.getAllCustomers();
+            String searchTerm = request.getParameter("search");
+            if (searchTerm != null && !searchTerm.trim().isEmpty()) {
+                customerList = customerService.searchCustomers(searchTerm.trim());
+            } else {
+                customerList = customerService.getAllCustomers();
+            }
             request.setAttribute("customers", customerList);
         } catch (SQLException e) {
             request.setAttribute("errorMessage", e.getMessage());
@@ -167,7 +172,7 @@ public class CustomerController extends HttpServlet {
      * Processes the update of a customer
      */
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int customerId = Integer.parseInt(request.getParameter("id"));
+        int customerId = Integer.parseInt(request.getParameter("customerId"));
         String accountNumber = request.getParameter("accountNumber");
         String name = request.getParameter("name");
         String address = request.getParameter("address");

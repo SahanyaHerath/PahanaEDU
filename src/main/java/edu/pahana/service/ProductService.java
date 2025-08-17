@@ -34,6 +34,17 @@ public class ProductService {
         return productDAO.getAllProducts();
     }
     
+    /**
+     * Searches products by name or description
+     * 
+     * @param searchTerm The search term
+     * @return List of matching products
+     * @throws SQLException if a database error occurs
+     */
+    public List<Product> searchProducts(String searchTerm) throws SQLException {
+        return productDAO.searchProducts(searchTerm);
+    }
+    
     public Product getProductById(int productId) throws SQLException {
         return productDAO.getProductById(productId);
     }
