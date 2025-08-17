@@ -102,7 +102,13 @@ public class UserManagementController extends HttpServlet {
      */
     private void listUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            List<User> users = userService.getAllUsers();
+            String searchTerm = request.getParameter("search");
+            List<User> users;
+            if (searchTerm != null && !searchTerm.trim().isEmpty()) {
+                users = userService.searchUsers(searchTerm.trim());
+            } else {
+                users = userService.getAllUsers();
+            }
             request.setAttribute("users", users);
             request.getRequestDispatcher("WEB-INF/view/user-management/listUsers.jsp").forward(request, response);
         } catch (SQLException e) {

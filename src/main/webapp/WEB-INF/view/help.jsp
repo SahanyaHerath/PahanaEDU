@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pahana Edu - Help & Support</title>
+    <title>Help & Support - Pahana Edu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,33 +13,48 @@
                 extend: {
                     colors: {
                         primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            200: '#bfdbfe',
-                            300: '#93c5fd',
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
                         }
                     }
                 }
             }
         }
     </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('-translate-x-full');
         }
     </script>
+    <style>
+        .help-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .help-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .action-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <!-- Sidebar -->
-    <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+    <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
         <!-- Logo -->
         <div class="flex items-center justify-center h-16 bg-gradient-to-r from-primary-600 to-primary-700">
             <div class="flex items-center space-x-3">
@@ -53,34 +68,34 @@
         <!-- Navigation Menu -->
         <nav class="mt-8 px-4">
             <div class="space-y-2">
-                <a href="dashboard" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200">
+                <a href="dashboard" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all duration-200">
                     <i class="fas fa-tachometer-alt w-5 h-5 mr-3"></i>
                     Dashboard
                 </a>
                 
-                <a href="customer?action=list" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200">
+                <a href="customer?action=list" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all duration-200">
                     <i class="fas fa-users w-5 h-5 mr-3"></i>
                     Customers
                 </a>
                 
-                <a href="product?action=list" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200">
+                <a href="product?action=list" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all duration-200">
                     <i class="fas fa-book w-5 h-5 mr-3"></i>
                     Products
                 </a>
                 
-                <a href="bill?action=list" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200">
+                <a href="bill?action=list" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all duration-200">
                     <i class="fas fa-file-invoice-dollar w-5 h-5 mr-3"></i>
                     Bills
                 </a>
                 
                 <c:if test="${sessionScope.role == 'admin'}">
-                    <a href="user-management?action=list" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200">
+                    <a href="user-management?action=list" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all duration-200">
                         <i class="fas fa-user-cog w-5 h-5 mr-3"></i>
                         User Management
                     </a>
                 </c:if>
                 
-                <a href="dashboard?action=help" class="flex items-center px-4 py-3 text-primary-600 bg-primary-50 rounded-lg font-medium">
+                <a href="dashboard?action=help" class="flex items-center px-4 py-3 text-primary-600 bg-primary-50 rounded-xl font-medium shadow-sm">
                     <i class="fas fa-question-circle w-5 h-5 mr-3"></i>
                     Help
                 </a>
@@ -103,250 +118,158 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Main Content -->
     <div class="lg:ml-64">
-        <!-- Top Bar -->
+        <!-- Header -->
         <div class="bg-white shadow-sm border-b border-gray-200">
             <div class="flex items-center justify-between px-6 py-4">
                 <div class="flex items-center space-x-4">
                     <button onclick="toggleSidebar()" class="lg:hidden text-gray-500 hover:text-gray-700">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
-                    <h1 class="text-2xl font-bold text-gray-900">Help & Support</h1>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">Help & Support</h1>
+                        <p class="text-sm text-gray-600">Get help with using the Pahana Edu system</p>
+                    </div>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <div class="text-sm text-gray-500">
-                        <i class="fas fa-clock mr-1"></i>
-                        <span id="current-time"></span>
-                    </div>
+                    <a href="dashboard" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-xl hover:bg-gray-200 transition-all duration-200 flex items-center">
+                        <i class="fas fa-home mr-2"></i>Back to Dashboard
+                    </a>
                 </div>
             </div>
         </div>
-        
-        <!-- Main Content Area -->
+
+        <!-- Content -->
         <div class="p-6">
-            <!-- Welcome Section -->
-            <div class="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-8 mb-8 text-white">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
-                        <i class="fas fa-question-circle text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-3xl font-bold">Help & Support Center</h1>
-                        <p class="text-primary-100">Everything you need to know about using Pahana Edu Billing System</p>
+            <div class="max-w-6xl mx-auto">
+                <!-- Welcome Section -->
+                <div class="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 mb-8 text-white">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-question-circle text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl font-bold mb-2">Welcome to Help & Support</h2>
+                            <p class="text-primary-100 text-lg">Find answers to common questions and learn how to use the system effectively.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Quick Navigation -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <a href="#getting-started" class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-rocket text-blue-600"></i>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900">Getting Started</h3>
-                    </div>
-                    <p class="text-gray-600">Learn the basics of using the system</p>
-                </a>
-                
-                <a href="#customer-management" class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-users text-green-600"></i>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900">Customer Management</h3>
-                    </div>
-                    <p class="text-gray-600">Manage customer information and accounts</p>
-                </a>
-                
-                <a href="#billing-system" class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-file-invoice-dollar text-purple-600"></i>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900">Billing System</h3>
-                    </div>
-                    <p class="text-gray-600">Create and manage customer bills</p>
-                </a>
-            </div>
-            
-            <!-- Help Content -->
-            <div class="space-y-8">
-                <!-- Getting Started Section -->
-                <div id="getting-started" class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+
+                <!-- Quick Start Guide -->
+                <div class="help-card bg-white rounded-2xl shadow-lg border border-gray-200 p-8 mb-8">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                            <i class="fas fa-rocket text-blue-600 text-xl"></i>
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-rocket text-green-600 text-xl"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900">Getting Started</h2>
+                        <h3 class="text-2xl font-bold text-gray-900">Quick Start Guide</h3>
                     </div>
                     
-                    <div class="prose max-w-none">
-                        <p class="text-gray-600 mb-4">
-                            Welcome to Pahana Edu Billing System! This comprehensive system helps you manage customers, 
-                            products, and billing information efficiently. Here's how to get started:
-                        </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-blue-200 rounded-xl flex items-center justify-center mr-3">
+                                    <i class="fas fa-users text-blue-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-blue-900">Manage Customers</h4>
+                            </div>
+                            <p class="text-blue-700 text-sm">Add, edit, and manage customer information. Track customer accounts and contact details.</p>
+                        </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                            <div class="bg-gray-50 rounded-lg p-6">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">1. Add Customers</h3>
-                                <p class="text-gray-600 mb-3">Start by adding your customers to the system:</p>
-                                <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                    <li>Go to Customer Management</li>
-                                    <li>Click "Add Customer"</li>
-                                    <li>Fill in customer details</li>
-                                    <li>Save the customer information</li>
-                                </ul>
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-green-200 rounded-xl flex items-center justify-center mr-3">
+                                    <i class="fas fa-book text-green-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-green-900">Manage Products</h4>
                             </div>
-                            
-                            <div class="bg-gray-50 rounded-lg p-6">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">2. Add Products</h3>
-                                <p class="text-gray-600 mb-3">Add your products to the inventory:</p>
-                                <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                    <li>Go to Product Management</li>
-                                    <li>Click "Add Product"</li>
-                                    <li>Enter product details and price</li>
-                                    <li>Set stock quantity</li>
-                                </ul>
+                            <p class="text-green-700 text-sm">Create and manage product catalog. Set prices and track inventory.</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-purple-200 rounded-xl flex items-center justify-center mr-3">
+                                    <i class="fas fa-file-invoice-dollar text-purple-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-purple-900">Create Bills</h4>
                             </div>
+                            <p class="text-purple-700 text-sm">Generate invoices for customers. Add products and calculate totals.</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Customer Management Section -->
-                <div id="customer-management" class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+
+                <!-- FAQ Section -->
+                <div class="help-card bg-white rounded-2xl shadow-lg border border-gray-200 p-8 mb-8">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                            <i class="fas fa-users text-green-600 text-xl"></i>
+                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-question text-yellow-600 text-xl"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900">Customer Management</h2>
+                        <h3 class="text-2xl font-bold text-gray-900">Frequently Asked Questions</h3>
                     </div>
                     
-                    <div class="prose max-w-none">
-                        <p class="text-gray-600 mb-4">
-                            Manage your customer database efficiently with our comprehensive customer management features.
-                        </p>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">How do I add a new customer?</h4>
+                            <p class="text-gray-700">Go to Customers → Add Customer. Fill in the required information including name, address, and telephone number.</p>
+                        </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Adding Customers</h3>
-                                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                    <li>Navigate to Customer Management</li>
-                                    <li>Click the "Add Customer" button</li>
-                                    <li>Fill in all required fields</li>
-                                    <li>Include contact information</li>
-                                    <li>Add billing address</li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Managing Customers</h3>
-                                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                    <li>View all customers in the list</li>
-                                    <li>Search for specific customers</li>
-                                    <li>Edit customer information</li>
-                                    <li>View customer billing history</li>
-                                    <li>Delete customers if needed</li>
-                                </ul>
-                            </div>
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">How do I create a bill?</h4>
+                            <p class="text-gray-700">Go to Bills → Create Bill. Select a customer, add products, and the system will calculate the total automatically.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Can I edit customer information?</h4>
+                            <p class="text-gray-700">Yes, go to Customers → List Customers, then click the edit button next to any customer to modify their information.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">How do I print a bill?</h4>
+                            <p class="text-gray-700">View any bill and click the "Print Bill" button. The system will generate a printable version of the invoice.</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Billing System Section -->
-                <div id="billing-system" class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+
+                <!-- Contact Support -->
+                <div class="help-card bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
-                            <i class="fas fa-file-invoice-dollar text-purple-600 text-xl"></i>
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-100 to-red-200 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-headset text-red-600 text-xl"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900">Billing System</h2>
+                        <h3 class="text-2xl font-bold text-gray-900">Need More Help?</h3>
                     </div>
                     
-                    <div class="prose max-w-none">
-                        <p class="text-gray-600 mb-4">
-                            Create and manage customer bills with our intuitive billing system.
-                        </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-blue-200 rounded-xl flex items-center justify-center mr-3">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-blue-900">Email Support</h4>
+                            </div>
+                            <p class="text-blue-700 text-sm mb-4">Send us an email for technical support and assistance.</p>
+                            <a href="mailto:support@pahanaedu.com" class="action-btn bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-all duration-200 flex items-center">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Email
+                            </a>
+                        </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Creating Bills</h3>
-                                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                    <li>Go to Bill Management</li>
-                                    <li>Click "Create Bill"</li>
-                                    <li>Select a customer</li>
-                                    <li>Add products to the bill</li>
-                                    <li>Set quantities and prices</li>
-                                    <li>Generate the final bill</li>
-                                </ul>
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-green-200 rounded-xl flex items-center justify-center mr-3">
+                                    <i class="fas fa-phone text-green-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-green-900">Phone Support</h4>
                             </div>
-                            
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-3">Managing Bills</h3>
-                                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                    <li>View all bills in the system</li>
-                                    <li>Search and filter bills</li>
-                                    <li>Print bills for customers</li>
-                                    <li>View bill details</li>
-                                    <li>Delete bills if necessary</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Support Contact -->
-                <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-8">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-headset text-primary-600 text-2xl"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Need More Help?</h2>
-                        <p class="text-gray-600 mb-6">
-                            If you need additional support or have questions not covered here, 
-                            please contact our support team.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <div class="flex items-center justify-center">
-                                <i class="fas fa-envelope text-primary-600 mr-2"></i>
-                                <span class="text-gray-700">support@pahanaedu.com</span>
-                            </div>
-                            <div class="flex items-center justify-center">
-                                <i class="fas fa-phone text-primary-600 mr-2"></i>
-                                <span class="text-gray-700">+94 11 234 5678</span>
-                            </div>
+                            <p class="text-green-700 text-sm mb-4">Call us for immediate assistance during business hours.</p>
+                            <a href="tel:+1234567890" class="action-btn bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition-all duration-200 flex items-center">
+                                <i class="fas fa-phone mr-2"></i>Call Now
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <script>
-        // Update current time
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            document.getElementById('current-time').textContent = timeString;
-        }
-        
-        updateTime();
-        setInterval(updateTime, 1000);
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html> 
